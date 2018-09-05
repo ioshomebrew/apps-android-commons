@@ -13,7 +13,6 @@
 * Movses
 * Nitch
 * Okras
-* Patriccck
 * Redredsonia
 * Rubin16
 * Vlad5250
@@ -172,7 +171,7 @@
   <string name="welcome_copyright_subtext">Избегайте материалов, защищённых авторским правом, например, найденных в Интернете, изображений плакатов, книжных обложек и т.п.</string>
   <string name="welcome_final_text">Вам это понятно?</string>
   <string name="welcome_final_button_text">Да!</string>
-  <string name="welcome_help_button_text"/>
+  <string name="welcome_help_button_text">*</string>
   <string name="detail_panel_cats_label">Категории</string>
   <string name="detail_panel_cats_loading">Загрузка…</string>
   <string name="detail_panel_cats_none">Ничего не выбрано</string>
@@ -266,7 +265,7 @@
   <string name="navigation_item_login">Войти</string>
   <string name="skip_login_title">Вы действительно хотите пропустить авторизацию?</string>
   <string name="skip_login_message">Вы не сможете загрузить изображения.</string>
-  <string name="login_alert_message">Войдите, чтобы использовать эту функцию</string>
+  <string name="login_alert_message">Войдите, чтоб использовать эту функцию</string>
   <string name="nearby_location_has_not_changed">Местоположение не изменено.</string>
   <string name="nearby_location_not_available">Местоположение недоступно.</string>
   <string name="location_permission_rationale_nearby">Необходимо разрешение для отображения списка мест поблизости</string>
@@ -356,5 +355,4 @@
   <string name="images_uploaded_explanation">Число изображений, загруженных на Викисклад любыми приложениями</string>
   <string name="images_reverted_explanation">Число изображений, загруженных на Викисклад и не удалённых</string>
   <string name="images_used_explanation">Число изображений, загруженных на Викисклад, которые используются в статьях Викимедиа</string>
-  <string name="notifications_channel_name_all">Уведомления Викисклада</string>
 </resources>

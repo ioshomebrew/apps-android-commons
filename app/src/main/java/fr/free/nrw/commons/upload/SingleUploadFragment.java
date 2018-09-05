@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.Address;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -35,6 +36,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import fr.free.nrw.commons.upload.DescriptionsAdapter.Callback;
+
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -57,11 +60,14 @@ import fr.free.nrw.commons.settings.Prefs;
 import fr.free.nrw.commons.utils.ViewUtil;
 import timber.log.Timber;
 
+import android.location.Geocoder;
+
 import static android.view.MotionEvent.ACTION_UP;
 
 public class SingleUploadFragment extends CommonsDaggerSupportFragment {
 
     @BindView(R.id.titleEdit) EditText titleEdit;
+    @BindView(R.id.locationEdit) EditText locationEdit;
     @BindView(R.id.rv_descriptions) RecyclerView rvDescriptions;
     @BindView(R.id.titleDescButton) Button titleDescButton;
     @BindView(R.id.share_license_summary) TextView licenseSummaryView;
@@ -75,6 +81,7 @@ public class SingleUploadFragment extends CommonsDaggerSupportFragment {
     private OnUploadActionInitiated uploadActionInitiatedHandler;
     private TitleTextWatcher textWatcher = new TitleTextWatcher();
     private DescriptionsAdapter descriptionsAdapter;
+    private Geocoder geoCoding;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -92,18 +99,38 @@ public class SingleUploadFragment extends CommonsDaggerSupportFragment {
                     return false;
                 }
 
+                if(locationEdit.getText().toString().trim().isEmpty())
+                {
+                    Toast.makeText(getContext(), R.string.add_location_toast, Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
                 String title = titleEdit.getText().toString();
                 String descriptionsInVariousLanguages = getDescriptionsInAppropriateFormat();
 
                 //Save the title/desc in short-lived cache so next time this fragment is loaded, we can access these
                 prefs.edit()
-                        .putString("Title", title)
+                        .putString("Title", "title")
                         .putString("Desc", new Gson().toJson(descriptionsAdapter
                                 .getDescriptions()))//Description, now is not just a string, its a list of description objects
                         .apply();
 
-                uploadActionInitiatedHandler
-                        .uploadActionInitiated(title, descriptionsInVariousLanguages);
+                // send location data to upload controller
+                Address result = getGeoLocation(locationEdit.getText().toString());
+                if(result == null)
+                {
+                    Log.d("SingleUploadFragment", "Error: Result is null/invalid location");
+                    return false;
+                }
+
+                Log.d("SingleUploadFragment", "Latitude is: " + result.getLatitude());
+                Log.d("SingleUploadFragment", "Longitude is: " + result.getLongitude());
+
+                // print combined string
+                String decimalCoords = String.format("%f|%f", result.getLatitude(), result.getLongitude());
+                Log.d("SingleUploadFragment", "Combined geolocation string: %s" + decimalCoords);
+
+                uploadActionInitiatedHandler.uploadActionInitiated(title, descriptionsInVariousLanguages);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -133,6 +160,8 @@ public class SingleUploadFragment extends CommonsDaggerSupportFragment {
         ButterKnife.bind(this, rootView);
 
         initRecyclerView();
+
+        geoCoding = new Geocoder(getContext(), Locale.getDefault());
 
         Intent activityIntent = getActivity().getIntent();
         if (activityIntent.hasExtra("title")) {
@@ -304,6 +333,47 @@ public class SingleUploadFragment extends CommonsDaggerSupportFragment {
             value = titleEdit.getLeft() + titleEdit.getCompoundDrawables()[0].getBounds().width();
             if (motionEvent.getAction() == ACTION_UP && motionEvent.getRawX() <= value) {
                 showInfoAlert(R.string.media_detail_title, R.string.title_info);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Address getGeoLocation(String location)
+    {
+        try {
+            List<Address> results = geoCoding.getFromLocationName(location, 5);
+            return results.get(0);
+        }
+        catch (IOException e)
+        {
+            return null;
+        }
+    }
+
+    @OnTouch(R.id.locationEdit)
+    // TODO: Implement feature to pinpoint location
+    boolean locationInfo(View view, MotionEvent motionEvent) {
+        final int value;
+        if (ViewCompat.getLayoutDirection(getView()) == ViewCompat.LAYOUT_DIRECTION_LTR) {
+            value = locationEdit.getRight() - locationEdit.getCompoundDrawables()[2].getBounds().width();
+            if (motionEvent.getAction() == ACTION_UP && motionEvent.getRawX() >= value) {
+                //showInfoAlert(R.string.media_detail_title, R.string.title_info);
+                Address result = getGeoLocation(locationEdit.getText().toString());
+
+                    Log.d("SingleUploadFragment", "Latitude is: " + result.getLatitude());
+                    Log.d("SingleUploadFragment", "Longitude is: " + result.getLongitude());
+                return true;
+            }
+        }
+        else {
+            value = locationEdit.getLeft() + locationEdit.getCompoundDrawables()[0].getBounds().width();
+            if (motionEvent.getAction() == ACTION_UP && motionEvent.getRawX() <= value) {
+                //showInfoAlert(R.string.media_detail_title, R.string.title_info);
+                Address result = getGeoLocation(locationEdit.getText().toString());
+
+                Log.d("SingleUploadFragment", "Latitude is: " + result.getLatitude());
+                Log.d("SingleUploadFragment", "Longitude is: " + result.getLongitude());
                 return true;
             }
         }

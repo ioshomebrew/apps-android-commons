@@ -270,8 +270,7 @@ public class ApacheHttpClientMediaWikiApi implements MediaWikiApi {
     public String edit(String editToken, String processedPageContent, String filename, String summary) throws IOException {
         return api.action("edit")
                 .param("title", filename)
-                .param("token", getEditToken())
-                .param("centralauthtoken", getCentralAuthToken())
+                .param("token", editToken)
                 .param("text", processedPageContent)
                 .param("summary", summary)
                 .post()
@@ -284,8 +283,7 @@ public class ApacheHttpClientMediaWikiApi implements MediaWikiApi {
     public String appendEdit(String editToken, String processedPageContent, String filename, String summary) throws IOException {
         return api.action("edit")
                 .param("title", filename)
-                .param("token", getEditToken())
-                .param("centralauthtoken", getCentralAuthToken())
+                .param("token", editToken)
                 .param("appendtext", processedPageContent)
                 .param("summary", summary)
                 .post()
@@ -297,8 +295,7 @@ public class ApacheHttpClientMediaWikiApi implements MediaWikiApi {
     public String prependEdit(String editToken, String processedPageContent, String filename, String summary) throws IOException {
         return api.action("edit")
                 .param("title", filename)
-                .param("token", getEditToken())
-                .param("centralauthtoken", getCentralAuthToken())
+                .param("token", editToken)
                 .param("prependtext", processedPageContent)
                 .param("summary", summary)
                 .post()

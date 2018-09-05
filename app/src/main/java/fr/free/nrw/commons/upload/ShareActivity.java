@@ -26,6 +26,7 @@ import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -218,6 +219,9 @@ public class ShareActivity
             cacheController.cacheCategory();
             Timber.d("Cache the categories found");
         }
+
+        String statement = String.format("Coordinates are: %s", decimalCoords);
+        Log.d("ShareActivity: ", statement);
 
         uploadController.startUpload(title, contentProviderUri, mediaUri, description, mimeType, source, decimalCoords, wikiDataEntityId, c -> {
             ShareActivity.this.contribution = c;

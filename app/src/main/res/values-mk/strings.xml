@@ -154,7 +154,6 @@
   <string name="welcome_copyright_subtext">Избегнуавјте материјали што сте ги нашле на семрежјето, како и слики од плакати, корици од книги и тн.</string>
   <string name="welcome_final_text">Објаснивме добро?</string>
   <string name="welcome_final_button_text">Да!</string>
-  <string name="welcome_help_button_text">&lt;u&gt;Повеќе информации&lt;/u&gt;</string>
   <string name="detail_panel_cats_label">Категории</string>
   <string name="detail_panel_cats_loading">Вчитувам…</string>
   <string name="detail_panel_cats_none">Ништо не е одбрано</string>
@@ -242,15 +241,12 @@
   <string name="null_url">Грешка! Не ја пронајдов URL</string>
   <string name="nominate_deletion">Предложи за бришење</string>
   <string name="nominated_for_deletion">Сликава е предложена за бришење.</string>
-  <string name="nominated_see_more">&lt;u&gt;Поподробно ќе најдете на мрежното место&lt;/u&gt;</string>
   <string name="view_browser">Погледај во прелистувач</string>
   <string name="skip_login">Прескокни</string>
   <string name="navigation_item_login">Најава</string>
   <string name="skip_login_title">Дали навистина сакате да ја прескокнете најавата?</string>
   <string name="skip_login_message">Нема да можете да подигате слики.</string>
   <string name="login_alert_message">Најавете се за да ја користите оваа можност.</string>
-  <string name="copy_wikicode">Прекопирај го викикодот во меѓускладот</string>
-  <string name="wikicode_copied">Викикодот е прекопиран во меѓускладот</string>
   <string name="nearby_location_has_not_changed">Местоположбата не е сменета.</string>
   <string name="nearby_location_not_available">Местоположбата е недостапна.</string>
   <string name="location_permission_rationale_nearby">Се бара дозвола за приказ на список на околни места</string>
@@ -298,7 +294,7 @@
   <string name="error_loading_subcategories">Се јави грешка при вчитувањето на поткатегориите.</string>
   <string name="successful_wikidata_edit">Сликата е успешно додадена кон %1$s на Википодатоците!</string>
   <string name="wikidata_edit_failure">Не успеав да ја изменам соодветната единица на Википодатоците!</string>
-  <string name="menu_set_wallpaper">Задај како позадина</string>
+  <string name="menu_set_wallpaper">Задај позадина</string>
   <string name="wallpaper_set_successfully">Позадината е успешно зададена!</string>
   <string name="quiz">Квиз</string>
   <string name="quiz_question_string">Дали е во ред да се подигне сликава?</string>
@@ -340,5 +336,4 @@
   <string name="images_uploaded_explanation">Бројот на слики што сте ги подигнале на Ризницата преку секоја алатка за подигање</string>
   <string name="images_reverted_explanation">Постоток од подигнатите слики на Ризницата кои не се избришани</string>
   <string name="images_used_explanation">Бројот на слики што сте ги подигнале на Ризницата кои се користат во статии</string>
-  <string name="notifications_channel_name_all">Известување од Ризницата</string>
 </resources>

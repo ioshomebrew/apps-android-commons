@@ -64,6 +64,20 @@
               android:layout_height="wrap_content"/>
           </LinearLayout>
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/locationEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/mapbox_compass_icon"
+            android:drawableRight="@drawable/mapbox_compass_icon"
+            android:maxLines="1"
+            android:maxLength="80"
+            android:hint="@string/share_location_hint"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="text"
+            android:scrollHorizontally="false" />
+
         <Spinner
             android:id="@+id/licenseSpinner"
             android:layout_width="match_parent"

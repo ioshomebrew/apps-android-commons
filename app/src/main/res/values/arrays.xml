@@ -14,4 +14,62 @@
         <item>@string/license_pref_cc_by_sa_3_0</item>
         <item>@string/license_pref_cc_by_sa_4_0</item>
     </array>
+    <array name="pref_languages">
+        <item>@string/en</item>
+        <item>@string/de</item>
+        <item>@string/zh1</item>
+        <item>@string/zh2</item>
+        <item>@string/cs</item>
+        <item>@string/nl1</item>
+        <item>@string/nl2</item>
+        <item>@string/en1</item>
+        <item>@string/en2</item>
+        <item>@string/en3</item>
+        <item>@string/en4</item>
+        <item>@string/en5</item>
+        <item>@string/fr1</item>
+        <item>@string/fr2</item>
+        <item>@string/fr3</item>
+        <item>@string/fr4</item>
+        <item>@string/de1</item>
+        <item>@string/de2</item>
+        <item>@string/de3</item>
+        <item>@string/it1</item>
+        <item>@string/it2</item>
+        <item>@string/ja</item>
+        <item>@string/ko</item>
+        <item>@string/pl</item>
+        <item>@string/ru</item>
+        <item>@string/es</item>
+        <item>@string/ar1</item>
+        <item>@string/ar2</item>
+        <item>@string/bg</item>
+        <item>@string/ca</item>
+        <item>@string/hr</item>
+        <item>@string/da</item>
+        <item>@string/en6</item>
+        <item>@string/en7</item>
+        <item>@string/en8</item>
+        <item>@string/fi</item>
+        <item>@string/el</item>
+        <item>@string/he</item>
+        <item>@string/hi</item>
+        <item>@string/hu</item>
+        <item>@string/id</item>
+        <item>@string/lv</item>
+        <item>@string/lt</item>
+        <item>@string/nb</item>
+        <item>@string/pt1</item>
+        <item>@string/pt2</item>
+        <item>@string/ro</item>
+        <item>@string/sr</item>
+        <item>@string/sk</item>
+        <item>@string/sl</item>
+        <item>@string/sv</item>
+        <item>Tagalog, Philippines</item>
+        <item>@string/th</item>
+        <item>@string/tr</item>
+        <item>Ukrainian</item>
+        <item>Vietnamese</item>
+    </array>
 </resources>

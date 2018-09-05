@@ -23,6 +23,13 @@
             android:entryValues="@array/pref_defaultLicense_values"
             android:defaultValue="@string/license_pref_cc_by_sa_4_0" />
 
+        <fr.free.nrw.commons.ui.LongTitlePreferences.LongTitleListPreference
+            android:key="language"
+            android:title="@string/language_setting"
+            android:entries="@array/pref_languages"
+            android:entryValues="@array/pref_defaultLicense_values"
+            android:defaultValue="English" />
+
         <fr.free.nrw.commons.ui.LongTitlePreferences.LongTitleSwitchPreference
             android:key="useExternalStorage"
             android:title="@string/use_external_storage"
